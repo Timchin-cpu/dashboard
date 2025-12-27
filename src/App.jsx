@@ -14,6 +14,7 @@ import Invoices from './components/Invoices'
 import Cards from './components/Cards'
 import SavingPlans from './components/SavingPlans'
 import Investments from './components/Investments'
+import Insights from './components/Insights'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -110,6 +111,9 @@ function App() {
   <SavingPlans />
 )}{currentPage === 'investments' && (
   <Investments />
+)}
+{currentPage === 'insights' && (
+  <Insights />
 )}
         </div>
       </main>
