@@ -12,6 +12,7 @@ import './styles/App.css'
 import Transactions from './components/Transactions'
 import Invoices from './components/Invoices'
 import Cards from './components/Cards'
+import SavingPlans from './components/SavingPlans'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -103,6 +104,9 @@ function App() {
 )}
 {currentPage === 'cards' && (
   <Cards />
+)}
+{currentPage === 'saving-plans' && (
+  <SavingPlans />
 )}
         </div>
       </main>
