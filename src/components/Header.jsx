@@ -1,5 +1,6 @@
 import { Icons } from './Icons'
 import '../styles/Header.css'
+import UserProfile from './UserProfile'
 
 const Header = ({ onMenuClick, userName }) => {
   return (
@@ -21,10 +22,8 @@ const Header = ({ onMenuClick, userName }) => {
           <span className="notification-badge">3</span>
         </button>
         
-        <div className="user-profile">
-          <div className="user-avatar">{userName.charAt(0)}</div>
-          <span className="user-name">{userName}</span>
-        </div>
+        <UserProfile userName={userName} />
+
       </div>
     </header>
   )
