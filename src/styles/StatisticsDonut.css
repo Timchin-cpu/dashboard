@@ -1,0 +1,163 @@
+.statistics-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 28px;
+  animation: slideUp 0.7s ease-out 0.1s backwards;
+}
+
+.donut-container {
+  position: relative;
+  margin: 32px 0;
+}
+
+.donut-chart {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(158, 240, 26, 0.2));
+}
+
+.donut-segment {
+  transition: all 0.3s ease;
+}
+
+.income-segment {
+  animation: drawCircle 1.5s ease-out forwards;
+}
+
+.expense-segment {
+  animation: drawCircle 1.5s ease-out 0.3s forwards;
+}
+
+@keyframes drawCircle {
+  from {
+    stroke-dasharray: 0 1000;
+  }
+}
+
+.donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.donut-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.donut-amount {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--primary-green);
+}
+
+.donut-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.expense-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  background: var(--bg-card);
+  border-radius: 10px;
+  transition: all 0.2s;
+  animation: slideIn 0.5s ease-out backwards;
+}
+
+.expense-item:nth-child(1) { animation-delay: 0.1s; }
+.expense-item:nth-child(2) { animation-delay: 0.2s; }
+.expense-item:nth-child(3) { animation-delay: 0.3s; }
+.expense-item:nth-child(4) { animation-delay: 0.4s; }
+.expense-item:nth-child(5) { animation-delay: 0.5s; }
+
+.expense-item:hover {
+  background: var(--bg-primary);
+  transform: translateX(4px);
+}
+
+.expense-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.expense-bar-container {
+  width: 40px;
+  height: 6px;
+  background: var(--darker-green);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.expense-bar {
+  height: 100%;
+  background: var(--primary-green);
+  border-radius: 3px;
+  transition: width 0.8s ease-out;
+  animation: expandBar 1s ease-out backwards;
+}
+
+@keyframes expandBar {
+  from { width: 0 !important; }
+}
+
+.expense-percentage {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary-green);
+  min-width: 35px;
+}
+
+.expense-name {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.expense-amount {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-primary);
+}
+
+@media (max-width: 480px) {
+  .donut-chart {
+    width: 160px;
+    height: 160px;
+  }
+  
+  .statistics-section {
+    padding: 20px;
+  }
+}

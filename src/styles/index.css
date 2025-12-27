@@ -1,0 +1,51 @@
+:root {
+  --primary-green: #9ef01a;
+  --dark-green: #1a3a2e;
+  --darker-green: #0f2419;
+  --bg-primary: #0a0f0d;
+  --bg-secondary: #111816;
+  --bg-card: #1a2621;
+  --text-primary: #ffffff;
+  --text-secondary: #8b9d94;
+  --text-muted: #5a6b64;
+  --border-color: #243530;
+  --success: #9ef01a;
+  --danger: #ff4757;
+  --warning: #ffa502;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-green);
+}

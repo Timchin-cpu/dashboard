@@ -1,0 +1,127 @@
+.transactions-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 28px;
+  animation: slideUp 0.8s ease-out;
+}
+
+.transactions-section .section-header {
+  margin-bottom: 20px;
+}
+
+.transactions-section .header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.transactions-table thead {
+  background: var(--bg-card);
+}
+
+.transactions-table th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.transactions-table tbody tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.2s;
+  animation: slideIn 0.5s ease-out backwards;
+}
+
+.transactions-table tbody tr:nth-child(1) { animation-delay: 0.1s; }
+.transactions-table tbody tr:nth-child(2) { animation-delay: 0.2s; }
+.transactions-table tbody tr:nth-child(3) { animation-delay: 0.3s; }
+.transactions-table tbody tr:nth-child(4) { animation-delay: 0.4s; }
+
+.transactions-table tbody tr:hover {
+  background: var(--bg-card);
+}
+
+.transactions-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.transactions-table td {
+  padding: 16px;
+  color: var(--text-secondary);
+}
+
+.transaction-name {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+}
+
+.amount {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.note {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-badge.completed {
+  background: rgba(158, 240, 26, 0.15);
+  color: var(--primary-green);
+}
+
+.status-badge.pending {
+  background: rgba(255, 165, 2, 0.15);
+  color: var(--warning);
+}
+
+.status-badge.failed {
+  background: rgba(255, 71, 87, 0.15);
+  color: var(--danger);
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    overflow-x: scroll;
+  }
+  
+  .transactions-table {
+    min-width: 800px;
+  }
+  
+  .transactions-section {
+    padding: 20px;
+  }
+}

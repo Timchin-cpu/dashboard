@@ -1,0 +1,82 @@
+import { useState, useEffect } from 'react'
+import Sidebar from './components/Sidebar'
+import Header from './components/Header'
+import BalanceCard from './components/BalanceCard'
+import StatCard from './components/StatCard'
+import CashflowChart from './components/CashflowChart'
+import StatisticsDonut from './components/StatisticsDonut'
+import TransactionsTable from './components/TransactionsTable'
+import { fakeData } from './data/fakeData'
+import './styles/App.css'
+
+function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024)
+  
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024)
+      if (window.innerWidth >= 1024) {
+        setSidebarOpen(false)
+      }
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+  
+  return (
+    <div className="app">
+      <Sidebar 
+        isOpen={sidebarOpen} 
+        onClose={() => setSidebarOpen(false)} 
+      />
+      
+      <main className="main-content">
+        <Header 
+          onMenuClick={() => setSidebarOpen(true)} 
+          userName={fakeData.user.name}
+        />
+        
+        <div className="content-wrapper">
+          <div className="top-section">
+            <BalanceCard user={fakeData.user} />
+            
+            <div className="stats-grid">
+              <StatCard 
+                title="Всего доходов"
+                amount={fakeData.summary.totalIncome}
+                change={fakeData.summary.incomeChange}
+                lastMonth={fakeData.summary.lastMonthIncome}
+                type="income"
+              />
+              <StatCard 
+                title="Всего расходов"
+                amount={fakeData.summary.totalExpenses}
+                change={fakeData.summary.expensesChange}
+                lastMonth={fakeData.summary.lastMonthExpenses}
+                type="expense"
+              />
+              <StatCard 
+                title="Всего накоплений"
+                amount={fakeData.summary.totalSaving}
+                change={fakeData.summary.savingChange}
+                lastMonth={fakeData.summary.lastMonthSaving}
+                type="saving"
+              />
+            </div>
+          </div>
+          
+          <div className="middle-section">
+            <CashflowChart data={fakeData.cashflow} />
+            <StatisticsDonut data={fakeData.statistics} />
+          </div>
+          
+          <TransactionsTable transactions={fakeData.transactions} />
+        </div>
+      </main>
+    </div>
+  )
+}
+
+export default App
