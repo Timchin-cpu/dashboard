@@ -10,6 +10,7 @@ import Payments from './components/Payments'
 import { fakeData } from './data/fakeData'
 import './styles/App.css'
 import Transactions from './components/Transactions'
+import Invoices from './components/Invoices'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -95,6 +96,9 @@ function App() {
           )}
           {currentPage === 'transactions' && (
   <Transactions />
+)}
+{currentPage === 'invoices' && (
+  <Invoices />
 )}
         </div>
       </main>
