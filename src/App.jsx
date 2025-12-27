@@ -6,12 +6,14 @@ import StatCard from './components/StatCard'
 import CashflowChart from './components/CashflowChart'
 import StatisticsDonut from './components/StatisticsDonut'
 import TransactionsTable from './components/TransactionsTable'
+import Payments from './components/Payments'
 import { fakeData } from './data/fakeData'
 import './styles/App.css'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024)
+  const [currentPage, setCurrentPage] = useState('dashboard')
   
   useEffect(() => {
     const handleResize = () => {
@@ -24,12 +26,21 @@ function App() {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
+
+  const handleNavigate = (page) => {
+    setCurrentPage(page)
+    if (isMobile) {
+      setSidebarOpen(false)
+    }
+  }
   
   return (
     <div className="app">
       <Sidebar 
         isOpen={sidebarOpen} 
-        onClose={() => setSidebarOpen(false)} 
+        onClose={() => setSidebarOpen(false)}
+        onNavigate={handleNavigate}
+        currentPage={currentPage}
       />
       
       <main className="main-content">
@@ -39,40 +50,48 @@ function App() {
         />
         
         <div className="content-wrapper">
-          <div className="top-section">
-            <BalanceCard user={fakeData.user} />
-            
-            <div className="stats-grid">
-              <StatCard 
-                title="Всего доходов"
-                amount={fakeData.summary.totalIncome}
-                change={fakeData.summary.incomeChange}
-                lastMonth={fakeData.summary.lastMonthIncome}
-                type="income"
-              />
-              <StatCard 
-                title="Всего расходов"
-                amount={fakeData.summary.totalExpenses}
-                change={fakeData.summary.expensesChange}
-                lastMonth={fakeData.summary.lastMonthExpenses}
-                type="expense"
-              />
-              <StatCard 
-                title="Всего накоплений"
-                amount={fakeData.summary.totalSaving}
-                change={fakeData.summary.savingChange}
-                lastMonth={fakeData.summary.lastMonthSaving}
-                type="saving"
-              />
-            </div>
-          </div>
-          
-          <div className="middle-section">
-            <CashflowChart data={fakeData.cashflow} />
-            <StatisticsDonut data={fakeData.statistics} />
-          </div>
-          
-          <TransactionsTable transactions={fakeData.transactions} />
+          {currentPage === 'dashboard' && (
+            <>
+              <div className="top-section">
+                <BalanceCard user={fakeData.user} />
+                
+                <div className="stats-grid">
+                  <StatCard 
+                    title="Всего доходов"
+                    amount={fakeData.summary.totalIncome}
+                    change={fakeData.summary.incomeChange}
+                    lastMonth={fakeData.summary.lastMonthIncome}
+                    type="income"
+                  />
+                  <StatCard 
+                    title="Всего расходов"
+                    amount={fakeData.summary.totalExpenses}
+                    change={fakeData.summary.expensesChange}
+                    lastMonth={fakeData.summary.lastMonthExpenses}
+                    type="expense"
+                  />
+                  <StatCard 
+                    title="Всего накоплений"
+                    amount={fakeData.summary.totalSaving}
+                    change={fakeData.summary.savingChange}
+                    lastMonth={fakeData.summary.lastMonthSaving}
+                    type="saving"
+                  />
+                </div>
+              </div>
+              
+              <div className="middle-section">
+                <CashflowChart data={fakeData.cashflow} />
+                <StatisticsDonut data={fakeData.statistics} />
+              </div>
+              
+              <TransactionsTable transactions={fakeData.transactions} />
+            </>
+          )}
+
+          {currentPage === 'payments' && (
+            <Payments />
+          )}
         </div>
       </main>
     </div>

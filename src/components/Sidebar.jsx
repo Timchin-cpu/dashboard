@@ -1,16 +1,16 @@
 import { Icons } from './Icons'
 import '../styles/Sidebar.css'
 
-const Sidebar = ({ isOpen, onClose }) => {
+const Sidebar = ({ isOpen, onClose, onNavigate, currentPage }) => {
   const menuItems = [
-    { icon: Icons.Dashboard, label: 'Главная', active: true },
-    { icon: Icons.Payments, label: 'Платежи' },
-    { icon: Icons.Transactions, label: 'Транзакции' },
-    { icon: Icons.Invoices, label: 'Счета' },
-    { icon: Icons.Cards, label: 'Карты' },
-    { icon: Icons.SavingPlans, label: 'Планы накопления' },
-    { icon: Icons.Investments, label: 'Инвестиции' },
-    { icon: Icons.Insights, label: 'Аналитика' }
+    { icon: Icons.Dashboard, label: 'Главная', page: 'dashboard' },
+    { icon: Icons.Payments, label: 'Платежи', page: 'payments' },
+    { icon: Icons.Transactions, label: 'Транзакции', page: 'transactions' },
+    { icon: Icons.Invoices, label: 'Счета', page: 'invoices' },
+    { icon: Icons.Cards, label: 'Карты', page: 'cards' },
+    { icon: Icons.SavingPlans, label: 'Планы накопления', page: 'saving-plans' },
+    { icon: Icons.Investments, label: 'Инвестиции', page: 'investments' },
+    { icon: Icons.Insights, label: 'Аналитика', page: 'insights' }
   ]
 
   return (
@@ -37,7 +37,8 @@ const Sidebar = ({ isOpen, onClose }) => {
           {menuItems.map((item, index) => (
             <button 
               key={index} 
-              className={`nav-item ${item.active ? 'active' : ''}`}
+              className={`nav-item ${currentPage === item.page ? 'active' : ''}`}
+              onClick={() => onNavigate(item.page)}
             >
               <item.icon />
               <span>{item.label}</span>
