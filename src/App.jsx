@@ -11,6 +11,7 @@ import { fakeData } from './data/fakeData'
 import './styles/App.css'
 import Transactions from './components/Transactions'
 import Invoices from './components/Invoices'
+import Cards from './components/Cards'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -99,6 +100,9 @@ function App() {
 )}
 {currentPage === 'invoices' && (
   <Invoices />
+)}
+{currentPage === 'cards' && (
+  <Cards />
 )}
         </div>
       </main>
