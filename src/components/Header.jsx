@@ -1,6 +1,7 @@
 import { Icons } from './Icons'
 import '../styles/Header.css'
 import UserProfile from './UserProfile'
+import Notifications from './Notifications'
 
 const Header = ({ onMenuClick, userName }) => {
   return (
@@ -17,10 +18,8 @@ const Header = ({ onMenuClick, userName }) => {
           <input type="text" placeholder="Поиск" />
         </div>
         
-        <button className="icon-button">
-          <Icons.Bell />
-          <span className="notification-badge">3</span>
-        </button>
+   <Notifications />
+
         
         <UserProfile userName={userName} />
 
