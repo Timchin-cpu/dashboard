@@ -422,11 +422,11 @@ const Investments = () => {
               <div className="asset-summary">
                 <div className="summary-item">
                   <span className="summary-label">Инвестировано</span>
-                  <span className="summary-value">{formatCurrency(asset.invested)}</span>
+                  <span className="summary-value" style={{fontSize:"19px"}}>{formatCurrency(asset.invested)}</span>
                 </div>
                 <div className="summary-item">
                   <span className="summary-label">Текущая стоимость</span>
-                  <span className="summary-value">{formatCurrency(asset.currentValue)}</span>
+                  <span className="summary-value" style={{fontSize:"19px"}}>{formatCurrency(asset.currentValue)}</span>
                 </div>
               </div>
 
