@@ -170,11 +170,11 @@ const Notifications = () => {
             {notifications.length > 0 && (
               <div className="header-actions">
                 {unreadCount > 0 && (
-                  <button className="action-btn" onClick={markAllAsRead}>
+                  <button className="action-btn" onClick={markAllAsRead} style={{width:'124px'}}>
                     Прочитать все
                   </button>
                 )}
-                <button className="action-btn danger" onClick={clearAll}>
+                <button className="action-btn danger" onClick={clearAll} style={{width:'124px'}}>
                   Очистить
                 </button>
               </div>
