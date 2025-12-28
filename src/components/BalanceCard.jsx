@@ -1,6 +1,7 @@
 import '../styles/BalanceCard.css'
 
 const BalanceCard = ({ user }) => {
+
   return (
     <div className="balance-card">
       <div className="balance-header">
